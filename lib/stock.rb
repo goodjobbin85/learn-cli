@@ -11,9 +11,8 @@ class Stock
 
 	@@all_stocks = [] 
 
-	def initialize(name, ticker, user=nil) 
+	def initialize(name, ticker) 
 		@name = name 
-		self.user = user if user
 		@ticker_symbol = ticker
 
 		@@all_stocks << self 
