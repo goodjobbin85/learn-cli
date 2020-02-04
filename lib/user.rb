@@ -1,12 +1,14 @@
+ 
+
 class User
-	attr_accessor :name 
+	attr_accessor :name, :stocks
 
 	@@all = [] 
 
-	def initialize(name) 
+	def initialize(name, stocks=nil) 
 		@name = name 
 		welcome_message
-		@stocks = []
+		@stocks = stocks
 	end 
 
 	def self.all 
@@ -16,6 +18,23 @@ class User
 	def welcome_message 
 		puts "Welcome #{self.name}! Let's start trading!" 
 	end 
-end 
 
-tom = User.new("Tom")
+	def stocks 
+		if @stocks 
+			@stocks 
+		else 
+			print "No stocks acquired yet!" 
+		end 
+	end 
+
+	def add_stock(stock)
+		#add stock to @stocks unless it already includes stock 
+		stock.user == self 
+		@stocks << stock unless @stocks.include?(stock)
+	end 
+
+end 
+#(tsla) 
+#tom.add_stock("TSLA")
+#puts "all your stocks: #{tom.stocks}" 
+

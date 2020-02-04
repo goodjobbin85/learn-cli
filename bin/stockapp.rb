@@ -1,28 +1,14 @@
+#!/usr/bin/env ruby 
 
 
-require 'iex-ruby-client'
+require_relative '../config/environment' 
+require_relative '../config/iex-client.rb'
 
-#StockQuote::Stock.new(api_key: Tpk_dd88c906f3ae4ac492644c2d0d82281d)
+user = User.new("Tom") 
+stock = Stock.new("Tesla", "TSLA") 
+puts user.stocks 
+puts stock.name 
 
-
-
-class Stock 
-	attr_accessor :name, :ticker, :user
-	@@all = [] 
-
-	def initialize(name, ticker, user=nil) 
-		@name = name 
-		self.user = user if user
-		@ticker_symbol = ticker
-
-		@@all << self 
-	end
-
-	def self.all_stocks 
-		@@all_stocks 
-	end
-end 
-=begin
 stock = IEX::Api::Client.new(
 	publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
 	endpoint: 'https://sandbox.iexapis.com/v1'
@@ -42,21 +28,3 @@ puts "#{stock.company("IBM").company_name}: #{stock.price("IBM")}"
 puts stock.price("F")
 puts stock.price("ENPH") 
 puts stock.price("TSLA")
-=end 
-
-=begin
-ohlc = stock.ohlc.get('ENPH') 
-puts ohlc.close.price # 90.165
-puts ohlc.close.time #
-puts ohlc.open.price # 0.375
-puts ohlc.open.time
-puts ohlc.high # 0.00418
-puts ohlc.low
-=end
-#stock = Stock.new("Microsoft", "MSFT") 
-#stock = Stock.new("Tesla", "TSLA") 
-#puts stock.name 
-
-
-
-
