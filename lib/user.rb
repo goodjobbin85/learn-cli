@@ -5,7 +5,7 @@ class User
 
 	@@all = [] 
 
-	def initialize(name, stocks=nil) 
+	def initialize(name, stocks=[]) 
 		@name = name 
 		welcome_message
 		@stocks = stocks
@@ -20,7 +20,7 @@ class User
 	end 
 
 	def stocks 
-		if @stocks 
+		if !@stocks.nil? 
 			@stocks 
 		else 
 			print "No stocks acquired yet!" 
@@ -30,7 +30,7 @@ class User
 	def add_stock(stock)
 		#add stock to @stocks unless it already includes stock 
 		stock.user == self 
-		@stocks << stock unless @stocks.include?(stock)
+		@stocks << stock 
 	end 
 
 end 

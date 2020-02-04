@@ -8,14 +8,15 @@ require 'iex-ruby-client'
 
 class Stock 
 	attr_accessor :name, :ticker, :user
-	@@all = [] 
+
+	@@all_stocks = [] 
 
 	def initialize(name, ticker, user=nil) 
 		@name = name 
 		self.user = user if user
 		@ticker_symbol = ticker
 
-		@@all << self 
+		@@all_stocks << self 
 	end
 
 	def self.all_stocks 
