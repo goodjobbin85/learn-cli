@@ -4,6 +4,7 @@
 require_relative '../config/environment' 
 require_relative '../config/iex-client.rb'
 
+Controller.new.invest
 user = User.new("Tom") 
 stock = Stock.new("Tesla", "TSLA") 
 puts user.stocks 
