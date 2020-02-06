@@ -29,7 +29,26 @@ class Stock
 			)  
 		quote = stock.quote(ticker.upcase) 
 		puts quote.latest_price 
-	end
+	end 
+
+	def self.week_52_high(ticker) 
+		stock = IEX::Api::Client.new(
+			publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
+			endpoint: 'https://sandbox.iexapis.com/v1'
+			)  
+			key_stats = stock.key_stats(ticker) 
+			puts "52-week high: #{key_stats.week_52_high}"
+	end 
+
+	def self.week_52_low(ticker) 
+		stock = IEX::Api::Client.new(
+			publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
+			endpoint: 'https://sandbox.iexapis.com/v1'
+			)  
+			key_stats = stock.key_stats(ticker) 
+			puts "52-week low: #{key_stats.week_52_low}"
+	end 
+
 end 
 =begin
 stock = IEX::Api::Client.new(

@@ -53,7 +53,8 @@ class Controller
 	#		puts quote.latest_price 
 			Stock.stock_price(ticker) 
 			key_stats = stock.key_stats(ticker) 
-			puts key_stats.week_52_high
+			Stock.week_52_high(ticker)
+			Stock.week_52_low(ticker)
 			puts "would you like to exit?"  
 			response = gets.chomp
 		end
