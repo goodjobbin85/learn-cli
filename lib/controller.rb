@@ -12,15 +12,16 @@ class Controller
 
 		puts "Let's make some money!" 
 		puts "If you would like to search for stocks, type in the ticker symbol."
-		puts "Please enter the ticker symbol of the stock you want" 
 		response = nil 
+		
 
 		while response != "exit"
+			puts "Please enter the ticker symbol of the stock you want"
 			ticker = gets.chomp 
-			puts ticker
-			price = stock.price(ticker.upcase) 
-			puts price 
-			puts "would you like to exit?" 
+	#		quote = stock.quote(ticker.upcase) 
+	#		puts quote.latest_price 
+			Stock.stock_price(ticker)
+			puts "would you like to exit?"  
 			response = gets.chomp
 		end
 	end 
