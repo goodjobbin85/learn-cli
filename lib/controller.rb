@@ -11,16 +11,49 @@ class Controller
 			) 
 
 		puts "Let's make some money!" 
-		puts "If you would like to search for stocks, type in the ticker symbol."
+		puts "Select a number to start."
+		puts "1. Research stock prices." 
+		puts "2. Add stock to portfolio." 
+		puts "3. Review your bank account." 
+		puts "4. Add funds to your account."
+		puts "5. Schedule a stock purchase." 
+		puts "6. View your portfolio." 
+		puts "7. Create a new portfolio." 
+		puts "8. Run a portfolio analysis." 
+		puts "9. Detailed stock information."
 		response = nil 
 		
+		case response 
+		when "1" 
+			puts "Please enter a stock ticker:" 
+			ticker = gets.chomp 
+			puts Stock.stock_price(ticker.upcase)
+		when "2" 
+			puts "2" 
+		when "3"
+			puts "3" 
+		when "4" 
+			puts "4" 
+		when "5" 
+			puts "5" 
+		when "6" 
+			puts "6" 
+		when "7" 
+			puts "7" 
+		when "8" 
+			puts "8" 
+		else 
+			puts "exiting..." 
+		end
 
 		while response != "exit"
 			puts "Please enter the ticker symbol of the stock you want"
 			ticker = gets.chomp 
 	#		quote = stock.quote(ticker.upcase) 
 	#		puts quote.latest_price 
-			Stock.stock_price(ticker)
+			Stock.stock_price(ticker) 
+			key_stats = stock.key_stats(ticker) 
+			puts key_stats.week_52_high
 			puts "would you like to exit?"  
 			response = gets.chomp
 		end
