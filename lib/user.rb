@@ -8,6 +8,8 @@ class User
 	def initialize(name, stocks=[]) 
 		@name = name 
 		welcome_message
+
+		
 		@stocks = stocks
 	end 
 

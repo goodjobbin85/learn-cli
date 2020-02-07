@@ -7,19 +7,46 @@ require 'iex-ruby-client'
 
 
 class Stock 
-	attr_accessor :name, :ticker, :user
+	attr_accessor :name, :user 
+	attr_reader :week_52_high_dollar, :week_52_low_dollar, :company_name, :market_cap_dollar,
+				:employees, :pe_ratio, :day_200_moving_avg, :day_50_moving_avg, :shares_outstanding, 
+				:next_earnings_date,  
 
-	@@all_stocks = [] 
 
-	def initialize(name, ticker) 
-		@name = name 
-		@ticker_symbol = ticker
+	@@all = [] 
 
-		@@all_stocks << self 
-	end
+	def initialize(ticker, user=nil) 
+		@ticker = ticker
+		@user = user
+		@company_name = company_name
+		@week_52_high = week_52_high 
+		@week_52_low = week_52_low 
+		@market_cap_dollar = market_cap_dollar 
+		@employees = employees 
+		@pe_ratio = pe_ratio
+		@day_200_moving_avg = day_200_moving_avg 
+		@day_50_moving_avg = day_50_moving_avg 
+		@shares_outstanding = shares_outstanding 
+		@next_earnings_date = next_earnings_date
 
+		@@all << self 
+	end 
+
+	def self.create(ticker) 
+		stock = Stock.new(ticker)
+		
+	end 
+=begin
+	def initialize(attributes) 
+		attributes.each { |key, value| self.send("#{key}=", value)} 
+	end 
+
+	def name
+		@name
+	end 
+=end
 	def self.all_stocks 
-		@@all_stocks 
+		@@all
 	end 
 
 	def self.stock_price(ticker) 
@@ -103,6 +130,6 @@ puts ohlc.low
 #stock = Stock.new("Tesla", "TSLA") 
 #puts stock.name 
 
-puts Stock.stock_price("MSFT")
+
 
 
