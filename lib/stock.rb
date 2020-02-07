@@ -49,6 +49,24 @@ class Stock
 			puts "52-week low: #{key_stats.week_52_low}"
 	end 
 
+	def self.print_detailed_stats(ticker) 
+		stock = IEX::Api::Client.new(
+			publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
+			endpoint: 'https://sandbox.iexapis.com/v1'
+			)  
+		key_stats = stock.key_stats(ticker) 
+		puts "#{key_stats.company_name}"
+		puts "52-week high: #{key_stats.week_52_high_dollar}"
+		puts "52-week low: #{key_stats.week_52_low_dollar}"
+		puts "Market Capitalization: #{key_stats.market_cap_dollar}"
+		puts "Number of employees: #{key_stats.employees}" 
+		puts "pe-ratio: #{key_stats.pe_ratio}"
+		puts "200-day moving average: #{key_stats.day_200_moving_avg}"
+		puts "50-day moving average: #{key_stats.day_50_moving_avg}" 
+		puts "Outstanding shares: #{key_stats.shares_outstanding}" 
+		puts "Next earnings date: #{key_stats.next_earnings_date}"
+	end
+
 end 
 =begin
 stock = IEX::Api::Client.new(

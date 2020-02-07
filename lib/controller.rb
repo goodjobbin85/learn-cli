@@ -54,7 +54,8 @@ class Controller
 			Stock.stock_price(ticker) 
 			key_stats = stock.key_stats(ticker) 
 			Stock.week_52_high(ticker)
-			Stock.week_52_low(ticker)
+			Stock.week_52_low(ticker) 
+			Stock.print_detailed_stats(ticker)
 			puts "would you like to exit?"  
 			response = gets.chomp
 		end
