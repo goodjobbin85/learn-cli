@@ -49,6 +49,7 @@ class Controller
 		while response != "exit"
 			puts "Please enter the ticker symbol of the stock you want"
 			ticker = gets.chomp 
+			Stock.create(ticker)
 	#		quote = stock.quote(ticker.upcase) 
 	#		puts quote.latest_price 
 			Stock.stock_price(ticker) 

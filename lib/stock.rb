@@ -7,10 +7,9 @@ require 'iex-ruby-client'
 
 
 class Stock 
-	attr_accessor :name, :user 
-	attr_reader :week_52_high_dollar, :week_52_low_dollar, :company_name, :market_cap_dollar,
+	attr_accessor :user, :week_52_high_dollar, :week_52_low_dollar, :company_name, :market_cap_dollar,
 				:employees, :pe_ratio, :day_200_moving_avg, :day_50_moving_avg, :shares_outstanding, 
-				:next_earnings_date,  
+				:next_earnings_date  
 
 
 	@@all = [] 
@@ -19,8 +18,8 @@ class Stock
 		@ticker = ticker
 		@user = user
 		@company_name = company_name
-		@week_52_high = week_52_high 
-		@week_52_low = week_52_low 
+		@week_52_high_dollar = week_52_high_dollar
+		@week_52_low_dollar = week_52_low_dollar 
 		@market_cap_dollar = market_cap_dollar 
 		@employees = employees 
 		@pe_ratio = pe_ratio
@@ -29,12 +28,32 @@ class Stock
 		@shares_outstanding = shares_outstanding 
 		@next_earnings_date = next_earnings_date
 
-		@@all << self 
+		self.save if !Stock.all.include?(self)
 	end 
 
 	def self.create(ticker) 
-		stock = Stock.new(ticker)
-		
+		stock = IEX::Api::Client.new(
+			publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
+			endpoint: 'https://sandbox.iexapis.com/v1'
+			)  
+		key_stats = stock.key_stats(ticker) 
+
+		new_stock = Stock.new(ticker) 
+		new_stock.company_name = key_stats.company_name
+		new_stock.week_52_high_dollar = key_stats.week_52_high_dollar 
+		new_stock.week_52_low_dollar = key_stats.week_52_low 
+		new_stock.market_cap_dollar = key_stats.market_cap_dollar 
+		new_stock.employees = key_stats.employees 
+		new_stock.pe_ratio = key_stats.pe_ratio 
+		new_stock.day_200_moving_avg = key_stats.day_200_moving_avg 
+		new_stock.day_50_moving_avg = key_stats.day_50_moving_avg 
+		new_stock.shares_outstanding = key_stats.shares_outstanding 
+		new_stock.next_earnings_date = key_stats.next_earnings_date 
+		new_stock.save if !self.all.include?(self)
+	end 
+
+	def save 
+		@@all << self
 	end 
 =begin
 	def initialize(attributes) 
@@ -45,7 +64,7 @@ class Stock
 		@name
 	end 
 =end
-	def self.all_stocks 
+	def self.all
 		@@all
 	end 
 
