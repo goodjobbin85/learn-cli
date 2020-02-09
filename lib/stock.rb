@@ -49,7 +49,8 @@ class Stock
 		new_stock.day_50_moving_avg = key_stats.day_50_moving_avg 
 		new_stock.shares_outstanding = key_stats.shares_outstanding 
 		new_stock.next_earnings_date = key_stats.next_earnings_date 
-		new_stock.save if !self.all.include?(self)
+#		new_stock.save if !self.all.include?(self) 
+		new_stock
 	end 
 
 	def save 

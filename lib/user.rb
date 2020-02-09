@@ -9,7 +9,7 @@ class User
 		@name = name 
 		welcome_message
 
-		
+
 		@stocks = stocks
 	end 
 
@@ -31,7 +31,7 @@ class User
 
 	def add_stock(stock)
 		#add stock to @stocks unless it already includes stock 
-		stock.user == self 
+		stock.user = self 
 		@stocks << stock 
 	end 
 
