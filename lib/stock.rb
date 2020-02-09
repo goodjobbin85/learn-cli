@@ -7,7 +7,7 @@ require 'iex-ruby-client'
 
 
 class Stock 
-	attr_accessor :user, :week_52_high_dollar, :week_52_low_dollar, :company_name, :market_cap_dollar,
+	attr_accessor :ticker, :user, :week_52_high_dollar, :week_52_low_dollar, :company_name, :market_cap_dollar,
 				:employees, :pe_ratio, :day_200_moving_avg, :day_50_moving_avg, :shares_outstanding, 
 				:next_earnings_date  
 
@@ -28,7 +28,7 @@ class Stock
 		@shares_outstanding = shares_outstanding 
 		@next_earnings_date = next_earnings_date
 
-		self.save if !Stock.all.include?(self)
+	#	self.save if !Stock.all.include?(self)
 	end 
 
 	def self.create(ticker) 
