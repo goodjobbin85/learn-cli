@@ -74,8 +74,9 @@ class Stock
 			publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
 			endpoint: 'https://sandbox.iexapis.com/v1'
 			)  
+		company = stock.company(ticker)
 		quote = stock.quote(ticker.upcase) 
-		puts quote.latest_price 
+		puts "#{company.company_name}: #{quote.latest_price}"
 	end 
 
 	def self.week_52_high(ticker) 

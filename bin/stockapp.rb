@@ -4,13 +4,14 @@
 require_relative '../config/environment' 
 require_relative '../config/iex-client.rb'
 
-#Controller.new.invest 
+Controller.new.invest 
 
 =begin
 user = User.new("Tom") 
 puts "Your stocks: #{user.stocks}" 
 =end 
 
+=begin
 paul = User.new("Paul") 
 natty = User.new("Natty") 
 
@@ -39,6 +40,6 @@ paul.stocks.each do |stock|
 end 
 
 puts "All natty's stocks:#{natty.stocks}"
-
+=end
 
 

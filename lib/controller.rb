@@ -23,29 +23,42 @@ class Controller
 		puts "9. Detailed stock information."
 		response = nil 
 		
-		case response 
-		when "1" 
-			puts "Please enter a stock ticker:" 
-			ticker = gets.chomp 
-			puts Stock.stock_price(ticker.upcase)
-		when "2" 
-			puts "2" 
-		when "3"
-			puts "3" 
-		when "4" 
-			puts "4" 
-		when "5" 
-			puts "5" 
-		when "6" 
-			puts "6" 
-		when "7" 
-			puts "7" 
-		when "8" 
-			puts "8" 
-		else 
-			puts "exiting..." 
-		end
+		while response != 'exit'
+			case response 
+			when "1" 
+				puts "Please enter a stock ticker:" 
+				ticker = gets.chomp 
+				puts Stock.stock_price(ticker.upcase)
+			when "2" 
+				puts "Let's add stocks to your portfolio!" 
+				puts "But first, some information about yourself." 
+				puts "What is your name?" 
+				investor_name = gets.chomp 
+				puts "How much are you willing to invest?" 
+				investment_amount = gets.chomp 
+				user = User.new(investor_name) 
+				
+			when "3"
+				puts "3" 
+			when "4" 
+				puts "4" 
+			when "5" 
+				puts "5" 
+			when "6" 
+				puts "6" 
+			when "7" 
+				puts "7" 
+			when "8" 
+				puts "8" 
+			else 
+				puts "exiting..." 
+			end 
+			puts "What would you like to do? Type 'exit' to quite"
+			response = gets.chomp
+		end 
+	end
 
+=begin
 		while response != "exit"
 			puts "Please enter the ticker symbol of the stock you want"
 			ticker = gets.chomp 
@@ -61,7 +74,7 @@ class Controller
 			response = gets.chomp
 		end
 	end 
-
+=end
 
 		
 
