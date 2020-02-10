@@ -29,14 +29,16 @@ paul.add_stock(ford)
 paul.add_stock(goog) 
 
 puts "puts all user's stocks below" 
-paul.stocks.each do |stock| 
-	puts stock.ticker 
-end 
+paul.print_stocks
+
+
 
 puts "puts all stocks users below"
 paul.stocks.each do |stock| 
 	puts stock.user.name
-end
+end 
+
+puts "All natty's stocks:#{natty.stocks}"
 
 
 

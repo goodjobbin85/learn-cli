@@ -114,6 +114,9 @@ class Stock
 		puts "Next earnings date: #{key_stats.next_earnings_date}"
 	end
 
+
+
+
 end 
 =begin
 stock = IEX::Api::Client.new(

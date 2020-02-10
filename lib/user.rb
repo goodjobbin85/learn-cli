@@ -29,6 +29,12 @@ class User
 		end 
 	end 
 
+	def print_stocks 
+		self.stocks.each do |stock| 
+			puts stock.ticker 
+		end 
+	end 
+
 	def add_stock(stock)
 		#add stock to @stocks unless it already includes stock 
 		stock.user = self 
