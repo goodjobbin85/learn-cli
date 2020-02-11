@@ -14,13 +14,13 @@ class Controller
 		puts "Select a number to start."
 		puts "1. Research stock prices." 
 		puts "2. Add stock to portfolio." 
+		puts "3. Advanced stock details."
 		puts "3. Review your bank account." 
 		puts "4. Add funds to your account."
-		puts "5. Schedule a stock purchase." 
 		puts "6. View your portfolio." 
 		puts "7. Create a new portfolio." 
 		puts "8. Run a portfolio analysis." 
-		puts "9. Detailed stock information."
+	
 		response = nil 
 		
 		while response != 'exit'
@@ -39,7 +39,9 @@ class Controller
 				user = User.new(investor_name) 
 				
 			when "3"
-				puts "3" 
+				puts "Please enter a stock ticker:" 
+				ticker = gets.chomp 
+				puts Stock.print_detailed_stats(ticker)
 			when "4" 
 				puts "4" 
 			when "5" 
