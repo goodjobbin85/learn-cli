@@ -103,7 +103,8 @@ class Stock
 			endpoint: 'https://sandbox.iexapis.com/v1'
 			)  
 		key_stats = stock.key_stats(ticker) 
-		puts "#{key_stats.company_name}"
+		puts "#{key_stats.company_name}" 
+		puts "Current Price: $#{stock.price(ticker)}"
 		puts "52-week high: #{key_stats.week_52_high_dollar}"
 		puts "52-week low: #{key_stats.week_52_low_dollar}"
 		puts "Market Capitalization: #{key_stats.market_cap_dollar}"

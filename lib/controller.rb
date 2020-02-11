@@ -9,22 +9,22 @@ class Controller
 			publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
 			endpoint: 'https://sandbox.iexapis.com/v1'
 			) 
-
-		puts "Let's make some money!" 
-		puts "Select a number to start."
-		puts "1. Research stock prices." 
-		puts "2. Add stock to portfolio." 
-		puts "3. Advanced stock details."
-		puts "3. Review your bank account." 
-		puts "4. Add funds to your account."
-		puts "6. View your portfolio." 
-		puts "7. Create a new portfolio." 
-		puts "8. Run a portfolio analysis." 
 	
 		response = nil 
-		
 		while response != 'exit'
+			puts "Please select a number."
+			puts "1. Research stock prices." 
+			puts "2. Add stock to portfolio." 
+			puts "3. Advanced stock details."
+			puts "3. Review your bank account." 
+			puts "4. Add funds to your account."
+			puts "6. View your portfolio." 
+			puts "7. Create a new portfolio." 
+			puts "8. Run a portfolio analysis."
+			response = gets.chomp 
+
 			case response 
+
 			when "1" 
 				puts "Please enter a stock ticker:" 
 				ticker = gets.chomp 
@@ -53,10 +53,9 @@ class Controller
 			when "8" 
 				puts "8" 
 			else 
-				puts "exiting..." 
+				
 			end 
-			puts "What would you like to do? Type 'exit' to quite"
-			response = gets.chomp
+
 		end 
 	end
 
