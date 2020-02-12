@@ -66,7 +66,8 @@ class Controller
 			when "5" 
 				puts "5" 
 			when "6" 
-				puts "6" 
+				puts "Your Portfolio"
+				user.print_stocks
 			when "7" 
 				puts "7" 
 			when "8" 
