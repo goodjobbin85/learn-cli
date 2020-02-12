@@ -12,7 +12,6 @@ class Controller
 	
 		response = nil 
 		while response != 'exit'
-			puts "Please select a number."
 			puts "1. Research stock prices." 
 			puts "2. Add stock to portfolio." 
 			puts "3. Advanced stock details."
@@ -21,6 +20,7 @@ class Controller
 			puts "6. View your portfolio." 
 			puts "7. Create a new portfolio." 
 			puts "8. Run a portfolio analysis."
+			print "Please select a number:"
 			response = gets.chomp 
 
 			case response 
@@ -34,9 +34,28 @@ class Controller
 				puts "But first, some information about yourself." 
 				puts "What is your name?" 
 				investor_name = gets.chomp 
-				puts "How much are you willing to invest?" 
-				investment_amount = gets.chomp 
-				user = User.new(investor_name) 
+				user = User.new(investor_name)
+				puts "Hi #{investor_name}. We've created an account for you!" 
+				puts "Now lets find some stocks to add to your portfolio." 
+				print "Please enter a stock ticker:" 
+				ticker = gets.chomp 
+				puts Stock.stock_price(ticker.upcase) 
+				new_stock = Stock.create(ticker) 
+				user.add_stock(new_stock) 
+				user.print_stocks 
+				puts "Would you like to add more stocks?" 
+					response = gets.chomp 
+					while response == "yes" 
+						print "Please enter a stock ticker:" 
+						ticker = gets.chomp 
+						puts Stock.stock_price(ticker.upcase) 
+						new_stock = Stock.create(ticker) 
+						user.add_stock(new_stock) 
+						user.print_stocks 
+						puts "Would you like to add more stocks?" 
+						response = gets.chomp  
+					end
+				 	puts "Thanks for investing in your future with us!"
 				
 			when "3"
 				puts "Please enter a stock ticker:" 
@@ -53,7 +72,8 @@ class Controller
 			when "8" 
 				puts "8" 
 			else 
-				
+				puts "Thanks and good luck!" 
+				break
 			end 
 
 		end 

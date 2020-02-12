@@ -30,8 +30,9 @@ class User
 	end 
 
 	def print_stocks 
+		puts "A list of all #{self.name.capitalize}'s stock!"
 		self.stocks.each do |stock| 
-			puts stock.ticker 
+			puts stock.ticker.upcase
 		end 
 	end 
 
