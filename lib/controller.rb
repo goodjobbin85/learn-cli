@@ -24,6 +24,7 @@ class Controller
 			puts "3. Review your bank account." 
 			puts "4. Add funds to your account."
 			puts "6. View your portfolio." 
+			puts "7. Press 'exit' to complete setup."
 			print "Please select a number:"
 			response = gets.chomp 
 
@@ -34,7 +35,7 @@ class Controller
 				ticker = gets.chomp 
 				puts Stock.stock_price(ticker.upcase)
 			when "2" 
-				puts "Hi #{investor_name}. We've created an account for you!" 
+				puts "Hi #{investor_name.capitalize}. We've created an account for you!" 
 				puts "Now lets find some stocks to add to your portfolio." 
 				print "Please enter a stock ticker:" 
 				ticker = gets.chomp 
@@ -42,19 +43,26 @@ class Controller
 				new_stock = Stock.create(ticker) 
 				user.add_stock(new_stock) 
 				user.print_stocks 
-				puts "Would you like to add more stocks?" 
-					response = gets.chomp 
-					while response == "yes" 
+				puts "Would you like to add more stocks?(y/n)" 
+				response = gets.chomp	
+
+					while response == "yes" || response == "y"
+
 						print "Please enter a stock ticker:" 
 						ticker = gets.chomp 
 						puts Stock.stock_price(ticker.upcase) 
 						new_stock = Stock.create(ticker) 
 						user.add_stock(new_stock) 
 						user.print_stocks 
-						puts "Would you like to add more stocks?" 
+						puts "Would you like to add more stocks?(y/n)" 
 						response = gets.chomp  
-					end
-				 	puts "Thanks for investing in your future with us!"
+					end 
+					puts ""
+					puts ""
+				 	puts "Thanks for investing in your future with us!" 
+				 	puts "Here are the companies you are now investing in:" 
+				 	puts "" 
+				 	user.print_stocks
 				
 			when "3"
 				puts "Please enter a stock ticker:" 

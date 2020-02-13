@@ -18,7 +18,7 @@ class User
 	end 
 
 	def welcome_message 
-		puts "Welcome #{self.name}! Let's start trading!" 
+		puts "Welcome #{self.name.capitalize}! Let's start investing!" 
 	end 
 
 	def stocks 
@@ -33,8 +33,10 @@ class User
 	def print_stocks 
 		puts "A list of all #{self.name.capitalize}'s stock!"
 		self.stocks.each do |stock| 
-			puts stock.ticker.upcase
+			puts "#{stock.ticker.upcase}"
 		end 
+		puts ""
+		puts ""
 	end 
 
 	def add_stock(stock)
