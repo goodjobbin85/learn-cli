@@ -22,6 +22,7 @@ class User
 	end 
 
 	def stocks 
+		#@stocks.dup.freeze
 		if !@stocks.nil? 
 			@stocks 
 		else 
