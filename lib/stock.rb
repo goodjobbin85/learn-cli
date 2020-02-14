@@ -26,10 +26,18 @@ class Stock
 		@day_200_moving_avg = day_200_moving_avg 
 		@day_50_moving_avg = day_50_moving_avg 
 		@shares_outstanding = shares_outstanding 
-		@next_earnings_date = next_earnings_date
+		@next_earnings_date = next_earnings_date 
 
 	#	self.save if !Stock.all.include?(self)
 	end 
+
+=begin
+	def initialize(hash) 
+		hash.each do |key, value| 
+			self.send(("#{key=}"), value) 
+		end 
+	end 
+=end
 
 	def self.create(ticker) 
 		stock = IEX::Api::Client.new(
