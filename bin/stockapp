@@ -4,7 +4,20 @@
 require_relative '../config/environment' 
 require_relative '../config/iex-client.rb'
 
+
+#base url for IEX API: https://cloud.iexapis.com/
+
+
+=begin 
+#Using REST and RestClient to get data in url
+rest = RestClient.get("https://sandbox.iexapis.com/stable/stock/aapl/quote?token=Tpk_dd88c906f3ae4ac492644c2d0d82281d")
+rest_json = JSON.parse(rest)
+binding.pry 
+=end 
+
 Controller.new.invest 
+
+
 
 =begin
 user = User.new("Tom") 
