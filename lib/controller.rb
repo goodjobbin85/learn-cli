@@ -1,3 +1,5 @@
+require 'pry'
+
 class Controller 
 
 	def initialize
@@ -18,13 +20,11 @@ class Controller
 
 		response = nil 
 		while response != 'exit'
-			puts "1. Research stock prices." 
-			puts "2. Add stock to portfolio." 
-			puts "3. Advanced stock details."
-			puts "3. Review your bank account." 
-			puts "4. Add funds to your account."
-			puts "6. View your portfolio." 
-			puts "7. Press 'exit' to complete setup."
+			puts "1. Research Stock Prices." 
+			puts "2. Add Stock To Portfolio." 
+			puts "3. Advanced Stock Details." 
+			puts "4. Print Your Portfolio Details."
+			puts "5. Press 'exit' to complete setup."
 			print "Please select a number:"
 			response = gets.chomp 
 
@@ -68,14 +68,11 @@ class Controller
 				puts "Please enter a stock ticker:" 
 				ticker = gets.chomp 
 				puts Stock.print_detailed_stats(ticker)
-			when "4" 
-				puts "4" 
-			when "5" 
-				puts "5" 
-			when "6" 
+			when "4"
 				puts "Your Portfolio"
 				user.print_stocks 
 			when "exit" 
+				puts "Thanks #{user.name}! Your account is now set up! Happy trading!"
 				break
 			else 
 				puts "Thanks and good luck!" 

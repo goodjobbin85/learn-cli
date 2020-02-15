@@ -1,7 +1,7 @@
 <h1> Stock App </h1> 
 
 
-<h2>This is a simple command line program that allows the user to grab detailed information about stocks that are currently on the publicly traded market.  The user can research stocks and add them to his/her portfolio</h2> 
+<h2>This is a simple command line program that allows the user to grab detailed information about stocks that are currently on the publicly traded market.  The user can research stocks and add them to his/her portfolio.</h2> 
 
 <h1>Dependancies</h1> 
 
