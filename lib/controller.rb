@@ -5,27 +5,22 @@ class Controller
 	def initialize
 		
 	end
+
 	def invest 
 
 		stock = IEX::Api::Client.new(
 			publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
 			endpoint: 'https://sandbox.iexapis.com/v1'
 			) 
-		
-		puts "Let's add stocks to your portfolio!" 
-		puts "But first, some information about yourself." 
-		puts "What is your name?" 
+
+
+		welcome 
 		investor_name = gets.chomp 
 		user = User.new(investor_name)
-
+		
 		response = nil 
 		while response != 'exit'
-			puts "1. Research Stock Prices." 
-			puts "2. Add Stock To Portfolio." 
-			puts "3. Advanced Stock Details." 
-			puts "4. Print Your Portfolio Details."
-			puts "5. Press 'exit' to complete setup."
-			print "Please select a number:"
+			display_options
 			response = gets.chomp 
 
 			case response 
@@ -70,9 +65,10 @@ class Controller
 				puts Stock.print_detailed_stats(ticker)
 			when "4"
 				puts "Your Portfolio"
-				user.print_stocks 
-			when "exit" 
+				user.print_detailed_stocks
+			when "5"
 				puts "Thanks #{user.name}! Your account is now set up! Happy trading!"
+				user.print_detailed_stocks
 				break
 			else 
 				puts "Thanks and good luck!" 
@@ -80,7 +76,22 @@ class Controller
 			end 
 
 		end 
-	end
+	end 
+
+	def welcome 
+		puts "Let's add stocks to your portfolio!" 
+		puts "But first, some information about yourself." 
+		puts "What is your name?" 
+	end  
+
+	def display_options 
+		puts "1. Research Stock Prices." 
+		puts "2. Add Stock To Portfolio." 
+		puts "3. Advanced Stock Details." 
+		puts "4. Print Your Portfolio Details."
+		puts "5. Press 'exit' to complete setup."
+		print "Please select a number:" 
+	end 
 
 =begin
 		while response != "exit"
