@@ -31,9 +31,13 @@ class User
 	end 
 
 	def print_stocks 
+		stock = IEX::Api::Client.new(
+			publishable_token: 'Tpk_dd88c906f3ae4ac492644c2d0d82281d',
+			endpoint: 'https://sandbox.iexapis.com/v1'
+			)  
 		puts "A list of all #{self.name.capitalize}'s stock!"
-		self.stocks.each do |stock| 
-			puts "#{stock.ticker.upcase}" 
+		self.stocks.each do |purchased_stock| 
+			puts "#{purchased_stock.ticker.upcase}: $#{stock.price(purchased_stock.ticker)}" 
 		end 
 		puts ""
 		puts ""

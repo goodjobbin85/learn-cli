@@ -2,7 +2,7 @@ require 'pry'
 
 class Controller 
 
-	def initialize
+	def initialize 
 		
 	end
 
@@ -66,11 +66,12 @@ class Controller
 			when "4"
 				puts "Your Portfolio"
 				user.print_detailed_stocks
-			when "5"
+			when "exit"
 				puts "Thanks #{user.name}! Your account is now set up! Happy trading!"
 				user.print_detailed_stocks
 				break
 			else 
+				user.print_detailed_stocks
 				puts "Thanks and good luck!" 
 				break
 			end 
