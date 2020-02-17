@@ -35,10 +35,14 @@ class Controller
 				print "Please enter a stock ticker:" 
 				ticker = gets.chomp 
 				puts Stock.stock_price(ticker.upcase) 
-				new_stock = Stock.create(ticker) 
-				user.add_stock(new_stock) 
-				user.print_stocks 
-				puts "Would you like to add more stocks?(y/n)" 
+				puts "Would you like to add this stock(y/n)?" 
+				answer = gets.chomp 
+				if answer == 'y'
+					new_stock = Stock.create(ticker) 
+					user.add_stock(new_stock) 
+					user.print_stocks 
+				end
+				puts "Would you like to find more stocks?(y/n)" 
 				response = gets.chomp	
 
 					while response == "yes" || response == "y"
@@ -46,11 +50,15 @@ class Controller
 						print "Please enter a stock ticker:" 
 						ticker = gets.chomp 
 						puts Stock.stock_price(ticker.upcase) 
-						new_stock = Stock.create(ticker) 
-						user.add_stock(new_stock) 
-						user.print_stocks 
+						puts "Would you like to add this stock?(y/n)" 
+						answer = gets.chomp 
+						if answer == "y" 
+							new_stock = Stock.create(ticker) 
+							user.add_stock(new_stock) 
+							user.print_stocks 
+						end
 						puts "Would you like to add more stocks?(y/n)" 
-						response = gets.chomp  
+						response = gets.chomp   
 					end 
 					puts ""
 					puts ""
