@@ -1,6 +1,7 @@
 #environment file for requirements and load files
 
 #require_relative '../config/iex-client.rb' 
+require 'iex-ruby-client'
 require 'httparty' 
 require 'rest-client' 
 require 'json' 

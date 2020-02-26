@@ -1,6 +1,6 @@
 
 
-require 'iex-ruby-client'
+
 
 #StockQuote::Stock.new(api_key: Tpk_dd88c906f3ae4ac492644c2d0d82281d)
 
