@@ -9,12 +9,13 @@
 class Stock 
 	attr_accessor :ticker, :user, :week_52_high_dollar, :week_52_low_dollar, :company_name, :market_cap_dollar,
 				:employees, :pe_ratio, :day_200_moving_avg, :day_50_moving_avg, :shares_outstanding, 
-				:next_earnings_date  
+				:next_earnings_date, :price 
 
 
 	@@all = [] 
 
 	def initialize(ticker, user=nil) 
+		@price = price
 		@ticker = ticker
 		@user = user
 		@company_name = company_name
@@ -47,6 +48,7 @@ class Stock
 		key_stats = stock.key_stats(ticker) 
 
 		new_stock = Stock.new(ticker) 
+		new_stock.price = stock.price(ticker)
 		new_stock.company_name = key_stats.company_name
 		new_stock.week_52_high_dollar = key_stats.week_52_high_dollar 
 		new_stock.week_52_low_dollar = key_stats.week_52_low 

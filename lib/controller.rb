@@ -34,12 +34,12 @@ class Controller
 				puts "Now lets find some stocks to add to your portfolio." 
 				print "Please enter a stock ticker:" 
 				ticker = gets.chomp 
-				puts Stock.stock_price(ticker.upcase) 
+				stock = Stock.create(ticker)
+				puts "#{stock.company_name.upcase}: $#{stock.price}"
 				puts "Would you like to add this stock(y/n)?" 
 				answer = gets.chomp 
 				if answer == 'y'
-					new_stock = Stock.create(ticker) 
-					user.add_stock(new_stock) 
+					user.add_stock(stock) 
 					user.print_stocks 
 				end
 				puts "Would you like to find more stocks?(y/n)" 
@@ -73,7 +73,7 @@ class Controller
 				puts Stock.print_detailed_stats(ticker)
 			when "4"
 				puts "Your Portfolio"
-				user.print_detailed_stocks
+				print_detailed_stocks(user)
 			when "exit"
 				puts "Thanks #{user.name}! Your account is now set up! Happy trading!"
 				user.print_detailed_stocks
@@ -100,6 +100,30 @@ class Controller
 		puts "4. Print Your Portfolio Details."
 		puts "5. Press 'exit' to complete setup."
 		print "Please select a number:" 
+	end 
+
+	def print_detailed_stocks(user)
+		puts ""
+		puts "A list of all #{user.name.capitalize}'s stock!" 
+		puts ""
+		user.stocks.each do |stock| 
+
+			puts "#{stock.ticker.upcase}" 
+			puts "#{stock.company_name}" 
+			#puts "Current Price: $#{stock.price(ticker)}"
+			puts "52-week high: #{stock.week_52_high_dollar}"
+			puts "52-week low: #{stock.week_52_low_dollar}"
+			puts "Market Capitalization: #{stock.market_cap_dollar}"
+			puts "Number of employees: #{stock.employees}" 
+			puts "pe-ratio: #{stock.pe_ratio}"
+			puts "200-day moving average: #{stock.day_200_moving_avg}"
+			puts "50-day moving average: #{stock.day_50_moving_avg}" 
+			puts "Outstanding shares: #{stock.shares_outstanding}" 
+			puts "Next earnings date: #{stock.next_earnings_date}" 
+			puts ""
+		end 
+		puts ""
+		puts ""
 	end 
 
 =begin

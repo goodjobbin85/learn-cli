@@ -8,4 +8,6 @@ class Api
 			endpoint: 'https://sandbox.iexapis.com/v1'
 			) 
 	end 
+
+	def 
 end 

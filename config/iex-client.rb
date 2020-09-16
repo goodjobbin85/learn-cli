@@ -1,4 +1,5 @@
 # Config file for iex-ruby gem 
+# gem dot-env
 
 IEX::Api.configure do |config|
   config.publishable_token = 'Tpk_dd88c906f3ae4ac492644c2d0d82281d'  # defaults to ENV['IEX_API_PUBLISHABLE_TOKEN']
